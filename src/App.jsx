@@ -1,17 +1,12 @@
 import { useState } from 'react'
 import CurrencyConverter from './hooks/CurrencyConverter'
-
-
 import {InputBox} from './components'
-
-
 function App() {
   const [amount, setAmount] = useState(0)
   const [from, setFrom] = useState("usd")
   const [to, setTo] = useState("inr")
   const [convertedAmount, setConvertedAmount] = useState(0)
   const currencyinfo = CurrencyConverter(from)
-
   const options = Object.keys(currencyinfo)
   const swap = () => {
     setFrom(to)
@@ -20,14 +15,7 @@ function App() {
     setAmount(convertedAmount)
   }
   const convert = () => { setConvertedAmount(amount * currencyinfo[to]) }
-  
-
   return (
-
-
-
-
-
     <div
       className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
       style={{
@@ -40,7 +28,6 @@ function App() {
             onSubmit={(e) => {
               e.preventDefault();
               convert()
-
             }}
           >
             <div className="w-full mb-1">
@@ -51,8 +38,6 @@ function App() {
                 selectCurrency={from}
                 onCurrencyChange={(currency)=>setFrom(currency)}
                 onamountChange={(amount)=>setAmount(amount)}
-
-
               />
             </div>
             <div className="relative w-full h-0.5">
@@ -60,7 +45,6 @@ function App() {
                 type="button"
                 className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-green-800 text-white px-2 py-0.5"
                 onClick={swap}
-
               >
                 swap
               </button>
@@ -74,7 +58,6 @@ function App() {
                 currencyOption={options}
                 selectCurrency={to}
                 onCurrencyChange={(currency)=>setTo(currency)}
-
               />
             </div>
             <button type="submit" className="w-full bg-green-800 text-white px-4 py-3 rounded-lg">
